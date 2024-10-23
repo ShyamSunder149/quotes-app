@@ -2,7 +2,7 @@
 import Alert from "@/components/alert";
 import { useState } from "react";
 
-export default function QuoteCard(props: any) {
+export default function QuoteCard(props: { quote: string, name: string }) {
 
   const [alertMessage, setAlertMessage] = useState('');
   const [showAlert, setShowAlert] = useState(false);
@@ -28,7 +28,7 @@ export default function QuoteCard(props: any) {
     <div className="block flex-col border border-black-700 rounded-lg p-6">
       {props.quote} <br />
       <div className="relative flex flex-row align-bottom items-center justify-center text-center p-5 gap-4">
-      <span className="float-right text-sm"> - {props.name}</span>
+        <span className="float-right text-sm"> - {props.name}</span>
         <button className="border border-black rounded-lg p-3" onClick={() => copyToClipboard(props.quote + " - " + props.name)}>Copy Quote</button>
       </div>
       {showAlert && <Alert message={alertMessage} onClose={closeAlert} />}
